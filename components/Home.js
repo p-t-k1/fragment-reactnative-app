@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'moment/locale/pl';  // without this line it didn't work
 moment.locale('pl');
 import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Home = () => {
     return (
@@ -30,14 +31,20 @@ const Home = () => {
                             paddingTop:15
                         }}>Codzienna powtórka</Text>
                     </View>
-                    <View style={{backgroundColor: '#0344f1', flex: 1,display:'flex',justifyContent:"center"}}>
+                    <View style={{backgroundColor: '#0344f1', flex: 1,display:'flex',alignItems:"center",flexDirection:"row"}}>
                         <Text style={{
                             textTransform: 'capitalize',
                             color: 'white',
                             fontWeight:"400"
-                        }}>5/5 Pozostało</Text><Icon name="rocket" size={30} color="#900" />
+                        }}>5/5 Pozostało</Text><Icon name="rocket" size={30} color="#900" /><MaterialCommunityIcons color={Colors.white} size={35} name="home"/>
                     </View>
                 </View>
+            </View>
+            <View style={styles.smallBarDiv}>
+                <Text style={{color: Colors.black,
+                    fontWeight:'bold',
+                    fontFamily:'serif',
+                    fontSize:18,}}>Zapisane Fragmenty</Text>
             </View>
 
         </View>
@@ -52,6 +59,16 @@ const styles = StyleSheet.create({
         aspectRatio: 1.3,
         borderRadius: 10,
     },
+    smallBarDiv:{
+        backgroundColor: '#61cbad',
+        width:"95%",
+        marginTop: 20,
+        borderRadius: 10,
+        aspectRatio: 4,
+        display:"flex",
+        justifyContent:"center",
+        padding:20
+    }
 });
 
 export default Home;

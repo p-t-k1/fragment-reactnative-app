@@ -12,6 +12,8 @@ target 'fragmentApp' do
     :hermes_enabled => false
   )
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'fragmentAppTests' do
     inherit! :complete
     # Pods for testing
