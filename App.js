@@ -7,9 +7,8 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from './Colors';
-
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 const Tab = createBottomTabNavigator();
 
 
@@ -34,7 +33,7 @@ const App: () => Node = () => {
                             <MaterialCommunityIcons
                                 name="book-open-blank-variant"
                                 color={color}
-                                size={size}
+                                size={30}
                             />
                         ),
                     }}  />
@@ -46,9 +45,9 @@ const App: () => Node = () => {
                         tabBarLabel: 'Settings',
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons
-                                name="settings"
+                                name="account-outline"
                                 color={color}
-                                size={size}
+                                size={30}
                             />
                         ),
                     }} />
