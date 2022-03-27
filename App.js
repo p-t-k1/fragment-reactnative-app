@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Colors from './Colors';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AddNew from './components/AddNew';
+import Search from './components/Search';
 const Tab = createBottomTabNavigator();
 
 
@@ -60,9 +61,9 @@ const App: () => Node = () => {
                         tabBarLabel: 'Dodaj',
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons
-                                name="plus-circle-outline"
+                                name="magnify"
                                 color={color}
-                                size={30}
+                                size={31}
                             />
                         ),
                     }}  />
@@ -71,7 +72,7 @@ const App: () => Node = () => {
                     component={Profile}
                     options={{
                         headerShown: false,
-                        tabBarLabel: 'Settings',
+                        tabBarLabel: 'Profil',
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons
                                 name="account-outline"

@@ -29,9 +29,18 @@ const Profile = () => {
             <View style={styles.syncContainer}>
                 <Text style={{textTransform:"uppercase",color:Colors.black,marginTop:10,fontSize:16,marginLeft:10,marginBottom:20}}>Połącz się</Text>
                 <View style={styles.singleSyncItem}>
-                    <View style={{backgroundColor:"red",aspectRatio:1,height:"100%"}}><Image style={{resizeMode:"cover",width:"100%",height:"100%",borderRadius:10}}source={require('../images/library.jpg')} /></View>
-                    <View style={{backgroundColor:Colors.test2,flex:2}}><Text style={{marginTop:15, marginLeft:5,color:Colors.black,fontSize:14,fontWeight:"600"}}>Facebook</Text><Text style={{marginLeft:5}}>Połącz się z Facebookiem i zapisuj notatki</Text></View>
-                    <View style={{backgroundColor:Colors.test3,flex:1,display:"flex",justifyContent:"center",alignItems:"center"}}><View style={styles.syncButton}><MaterialCommunityIcons
+                    <View style={{aspectRatio:1,height:"100%"}}><Image style={{resizeMode:"cover",width:"100%",height:"100%",borderRadius:10}}source={require('../images/facebook.png')} /></View>
+                    <View style={{flex:3}}><Text style={{marginTop:10, marginLeft:10,color:Colors.black,fontSize:14,fontWeight:"600"}}>Facebook</Text><Text style={{marginLeft:10, color:Colors.black,fontWeight:"300"}}>Połącz się z Facebookiem i zapisuj notatki</Text></View>
+                    <View style={{flex:1,display:"flex",justifyContent:"center",alignItems:"center"}}><View style={styles.syncButton}><MaterialCommunityIcons
+                        name="sync"
+                        color={Colors.white}
+                        size={20}
+                    /></View></View>
+                </View>
+                <View style={styles.singleSyncItem}>
+                    <View style={{aspectRatio:1,height:"100%"}}><Image style={{resizeMode:"cover",width:"100%",height:"100%",borderRadius:10}}source={require('../images/twitter.png')} /></View>
+                    <View style={{flex:3}}><Text style={{marginTop:10, marginLeft:10,color:Colors.black,fontSize:14,fontWeight:"600"}}>Twitter</Text><Text style={{marginLeft:10, color:Colors.black,fontWeight:"300"}}>Połącz się z Twitterem i zapisuj notatki</Text></View>
+                    <View style={{flex:1,display:"flex",justifyContent:"center",alignItems:"center"}}><View style={styles.syncButton}><MaterialCommunityIcons
                         name="sync"
                         color={Colors.white}
                         size={20}
@@ -54,15 +63,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     syncContainer:{
-        backgroundColor: Colors.test1,
         width:"100%",
         marginTop: 20,
     },
     singleSyncItem:{
-        backgroundColor: Colors.test2,
         marginLeft:10,
         marginRight:10,
-        height:100,
+        height:80,
         flexDirection:"row",
         marginBottom:20
     },
