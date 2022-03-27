@@ -1,17 +1,46 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Switch, Text, View} from 'react-native';
 import Colors from '../Colors';
 import Header from './Header';
+import {Slider} from '@miblanchard/react-native-slider';
+import ToggleSwitch from 'toggle-switch-react-native'
 
 const Profile = () => {
+
+    const [reviewsAmount,setReviewsAmount] = useState(5)
+    const [randomizeReviews,setRandomizeReviews] = useState(false)
+
     return (
         <View style={{flex: 1, display: 'flex', alignItems: 'center', backgroundColor: Colors.light}}>
             <Header name="Profil"/>
             <View style={styles.settingsBar}><View style={styles.settingsTab}><Text style={{color:Colors.black,fontSize:16,fontWeight:"600",marginBottom:3}}>Ustawienia ogólne</Text></View></View>
-            <View style={styles.settingsContainer}><Text style={{fontSize:18,margin:15,width:"100%"}}>Dostosuj ustawienia aplikacji według własnych potrzeb</Text></View>
+            <View style={styles.settingsContainer}>
+                <Text style={{fontSize:18,margin:15,width:"100%"}}>Dostosuj ustawienia aplikacji według własnych potrzeb</Text>
+                <Text style={{marginLeft:15,marginTop:25,fontSize:16,color:Colors.black,fontWeight:"600"}}>Ilość codziennych powtórek: {reviewsAmount}</Text>
+                <View style={{width:"90%",display:'flex',marginLeft:15,marginBottom:20}}><Slider
+                    minimumValue={1}
+                    maximumValue={15}
+                    step={1}
+                    minimumTrackTintColor={Colors.primary}
+                    maximumTrackTintColor={Colors.primary_light}
+                    thumbTintColor={Colors.primary}
+                    value={reviewsAmount}
+                    onValueChange={value => setReviewsAmount(value)}
+                /></View>
+                <ToggleSwitch
+                    isOn={randomizeReviews}
+                    onColor={Colors.primary}
+                    offColor={Colors.gray}
+                    animationSpeed="150"
+                    size="medium"
+                    label="Losowa kolejność powtórek                   "
+                    labelStyle={{marginLeft:15,fontSize:16,color:Colors.black,fontWeight:"600"}}
+                    onToggle={isOn => setRandomizeReviews(!randomizeReviews)}
+                />
+            </View>
         </View>
     )
-}
+};
 
 const styles = StyleSheet.create({
     settingsContainer:{
