@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Colors from './Colors';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import AddNew from './components/AddNew';
 const Tab = createBottomTabNavigator();
 
 
@@ -32,6 +33,34 @@ const App: () => Node = () => {
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons
                                 name="book-open-blank-variant"
+                                color={color}
+                                size={30}
+                            />
+                        ),
+                    }}  />
+                <Tab.Screen
+                    name="AddStack"
+                    component={AddNew}
+                    options={{
+                        headerShown: false,
+                        tabBarLabel: 'Dodaj',
+                        tabBarIcon: ({ color, size }) => (
+                            <MaterialCommunityIcons
+                                name="plus-circle-outline"
+                                color={color}
+                                size={30}
+                            />
+                        ),
+                    }}  />
+                <Tab.Screen
+                    name="SearchStack"
+                    component={Search}
+                    options={{
+                        headerShown: false,
+                        tabBarLabel: 'Dodaj',
+                        tabBarIcon: ({ color, size }) => (
+                            <MaterialCommunityIcons
+                                name="plus-circle-outline"
                                 color={color}
                                 size={30}
                             />

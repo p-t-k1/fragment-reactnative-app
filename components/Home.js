@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import Colors from '../Colors';
 import Header from './Header';
 import moment from 'moment';
@@ -9,18 +9,18 @@ moment.locale('pl');
 
 const Home = () => {
     return (
-        <View style={{flex: 1, display: 'flex', alignItems: 'center', backgroundColor: 'green'}}>
+        <View style={{flex: 1, display: 'flex', alignItems: 'center', backgroundColor: Colors.light}}>
             <Header name="Fragment"></Header>
             <View style={styles.dailyReviewDiv}>
-                <View style={{backgroundColor: '#4576ff', flex: 1, margin: 20}}>
-                    <View style={{backgroundColor: '#0c4cf6', flex: 1,display:'flex',justifyContent:'center',borderBottomWidth:3,borderBottomColor:Colors.white}}>
+                <View style={{backgroundColor: Colors.primary, flex: 1, margin: 20}}>
+                    <View style={{backgroundColor: Colors.primary, flex: 1,display:'flex',justifyContent:'center',borderBottomWidth:3,borderBottomColor:Colors.white}}>
                         <Text style={{
                             textTransform: 'capitalize',
                             color: 'white',
                             fontWeight:"500",
                         }}>{moment().format('MMMM D, YYYY')}</Text>
                     </View>
-                    <View style={{backgroundColor: '#194cd4', flex: 3}}>
+                    <View style={{backgroundColor: Colors.primary, flex: 3}}>
                         <Text style={{
                             textTransform: 'capitalize',
                             color: 'white',
@@ -30,7 +30,7 @@ const Home = () => {
                             paddingTop:15
                         }}>Codzienna powtórka</Text>
                     </View>
-                    <View style={{backgroundColor: '#0344f1', flex: 1,display:'flex',alignItems:"center",flexDirection:"row"}}>
+                    <View style={{backgroundColor: Colors.primary, flex: 1,display:'flex',alignItems:"center",flexDirection:"row"}}>
                         <Text style={{
                             textTransform: 'capitalize',
                             color: 'white',
@@ -42,25 +42,35 @@ const Home = () => {
             <View style={styles.smallBarDiv}>
                 <Text style={{color: Colors.black,
                     fontWeight:'bold',
-                    fontFamily:'serif',
-                    fontSize:18,flex:2,backgroundColor:"#3344aa",textAlignVertical:"center",}}>Zapisane Fragmenty</Text>
-                <View style={{flex:1,backgroundColor:"#33446a",height:"100%"}}><Text>123</Text></View>
+                    fontFamily:'serif', paddingLeft:20,
+                    fontSize:18,flex:2,backgroundColor:Colors.light,textAlignVertical:"center",}}>Zapisane Fragmenty</Text>
+                <View style={{flex:1,backgroundColor:Colors.light,height:"100%"}}><Image style={{resizeMode:"cover",opacity:0.5,width:"100%",height:"100%"}}source={require('../images/library.jpg')} /></View>
             </View>
 
         </View>
     );
-};
+}
 
 const styles = StyleSheet.create({
     dailyReviewDiv: {
-        backgroundColor: 'cyan',
+        backgroundColor: Colors.primary,
         width: '95%',
         marginTop: 20,
         aspectRatio: 1.3,
         borderRadius: 10,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.36,
+        shadowRadius: 6.68,
+
+        elevation: 11,
     },
     smallBarDiv:{
-        backgroundColor: '#61cbad',
+        backgroundColor: Colors.light,
         width:"95%",
         marginTop: 20,
         borderRadius: 10,
@@ -69,8 +79,18 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
         padding:0,
-        flexDirection:"row"
+        flexDirection:"row",
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.36,
+        shadowRadius: 6.68,
+
+        elevation: 11,
     }
-});
+})
 
 export default Home;
