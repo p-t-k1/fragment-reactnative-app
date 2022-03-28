@@ -10,7 +10,7 @@ const Home = (props) => {
     const [displayCog,setDisplayCog] = useState(props.name==="Profil")
 
     return (
-        <View style={{display:'flex', justifyContent:'space-between',alignItems:'center',flexDirection:"row",backgroundColor: Colors.test1,height:60, width: "100%"}}>
+        <View style={{display:'flex', justifyContent:'space-between',alignItems:'center',flexDirection:"row",backgroundColor: Colors.light,height:60, width: "100%"}}>
             {displayBell && <MaterialCommunityIcons name="bell-outline" size={24} color="#445" style={{marginLeft:10}} />}
             {!displayBell && <MaterialCommunityIcons name="bell-outline" size={24} color={Colors.light} style={{marginLeft:10}} />}
             <Text style={{color:Colors.black, fontSize:22,fontFamily:"serif",fontWeight:"bold"}}>{props.name}</Text>

@@ -5,19 +5,18 @@ import Colors from '../Colors';
 const SingleBook = (props) =>{
     return(
         <View style={styles.singleBook}>
-        <Image style={{resizeMode:"cover",width:"90%",height:"90%"}} source={require('../images/library.jpg')} />
+        <Image style={{resizeMode:"contain",width:"100%",height:"100%"}} source={require('../images/sampleBookCover.jpg')} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     singleBook:{
-        backgroundColor:Colors.test2,
         width:"25%",
         aspectRatio:0.7,
         justifyContent:"center",
         alignItems:"center",
-        marginBottom:3
+        marginBottom:10
     }
 })
 

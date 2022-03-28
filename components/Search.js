@@ -32,8 +32,8 @@ const Profile = () => {
             <View style={styles.browseYourContentContainer}>
                 <Text style={{textTransform:"uppercase",color:Colors.black,marginTop:10,fontSize:16,marginBottom:10}}>Przeglądaj zapisane</Text>
                 <View style={{display:'flex',alignItems:"center"}}>
-                    <View style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:10,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Wszystkie</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.jpg')} /></View>
-                    <View style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:10,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Po tagach</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.jpg')} /></View>
+                    <View style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Wszystkie</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.jpg')} /></View>
+                    <View style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Po tagach</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.jpg')} /></View>
                 </View>
             </View>
             <View style={styles.recentBooksContainer}>
@@ -56,27 +56,35 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
     singleItem:{
-       backgroundColor:Colors.test1,
+       backgroundColor:Colors.light,
         width:"95%",
-        height: 70,
+        height: 60,
         borderRadius:15,
         marginBottom:10,
         justifyContent:"center",
-        flexDirection: "row"
+        flexDirection: "row",
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.66,
+        shadowRadius: 3.68,
+
+        elevation: 5,
     },
     recentBooksContainer:{
-        backgroundColor: Colors.test3,
+        backgroundColor: Colors.light,
         width:"95%",
-        marginTop:30,
+        marginTop:10,
         marginBottom: 50
     },
     browseYourContentContainer:{
-        backgroundColor: Colors.test3,
         width:"95%",
         marginTop:30,
     },
     searchBar: {
-        backgroundColor: Colors.test3,
         width: "95%",
         height:45,
         marginTop: 30,
