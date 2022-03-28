@@ -58,7 +58,7 @@ const App: () => Node = () => {
                     component={Search}
                     options={{
                         headerShown: false,
-                        tabBarLabel: 'Dodaj',
+                        tabBarLabel: 'Szukaj',
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons
                                 name="magnify"
