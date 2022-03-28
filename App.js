@@ -11,12 +11,25 @@ import Colors from './Colors';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AddNew from './components/AddNew';
 import Search from './components/Search';
-const Tab = createBottomTabNavigator();
+import {createNativeStackNavigator} from 'react-native-screens/native-stack';
+import Login from './components/Login';
 
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
-    return (
-        <NavigationContainer>
+
+    /*function HomeStackScreen() {
+        return (
+            <HomeStack.Navigator>
+                <HomeStack.Screen name="Login" component={Login} />
+                <HomeStack.Screen name="Home" component={Home} />
+            </HomeStack.Navigator>
+        );
+    }*/
+
+    function TabNavigation(){
+        return(
             <Tab.Navigator
                 initialRouteName="Home"
                 tabBarOptions={{
@@ -82,6 +95,15 @@ const App: () => Node = () => {
                         ),
                     }} />
             </Tab.Navigator>
+        )
+    }
+
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Main" component={TabNavigation} />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 };

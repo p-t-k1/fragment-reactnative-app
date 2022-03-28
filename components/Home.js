@@ -1,5 +1,5 @@
-import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {AsyncStorage, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Colors from '../Colors';
 import Header from './Header';
 import moment from 'moment';
@@ -7,7 +7,11 @@ import 'moment/locale/pl';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 moment.locale('pl');
 
-const Home = () => {
+const Home = ({ navigation }) => {
+
+    const [reviewsAmount,setReviewsAmount] = useState(5)
+    const [reviewsLeft,setReviewsLeft] = useState(5)
+
     return (
         <View style={{flex: 1, display: 'flex', alignItems: 'center', backgroundColor: Colors.light}}>
             <Header name="Fragment"></Header>
@@ -35,17 +39,17 @@ const Home = () => {
                             textTransform: 'capitalize',
                             color: 'white',
                             fontWeight:"400"
-                        }}>5/5 Pozostało </Text><MaterialCommunityIcons name="arrow-right" size={18} color="white" />
+                        }}>{reviewsLeft}/{reviewsAmount} Pozostało </Text><MaterialCommunityIcons name="arrow-right" size={18} color="white" />
                     </View>
                 </View>
             </View>
-            <View style={styles.smallBarDiv}>
+            <TouchableOpacity activeOpacity={.9} style={styles.smallBarDiv} onPress={()=>{navigation.navigate("SearchStack")}}>
                 <Text style={{color: Colors.black,
                     fontWeight:'bold',
                     fontFamily:'serif', paddingLeft:20,
                     fontSize:18,flex:2,backgroundColor:Colors.light,textAlignVertical:"center",}}>Zapisane Fragmenty</Text>
                 <View style={{flex:1,backgroundColor:Colors.light,height:"100%"}}><Image style={{resizeMode:"cover",opacity:0.5,width:"100%",height:"100%"}}source={require('../images/library.jpg')} /></View>
-            </View>
+            </TouchableOpacity>
 
         </View>
     );
