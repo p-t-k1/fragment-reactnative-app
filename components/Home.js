@@ -47,8 +47,8 @@ const Home = ({ navigation }) => {
                 <Text style={{color: Colors.black,
                     fontWeight:'bold',
                     fontFamily:'serif', paddingLeft:20,
-                    fontSize:18,flex:2,backgroundColor:Colors.light,textAlignVertical:"center",}}>Zapisane Fragmenty</Text>
-                <View style={{flex:1,backgroundColor:Colors.light,height:"100%"}}><Image style={{resizeMode:"cover",opacity:0.5,width:"100%",height:"100%"}}source={require('../images/library.jpg')} /></View>
+                    fontSize:18,flex:2,textAlignVertical:"center",}}>Zapisane Fragmenty</Text>
+                <View style={{flex:1,backgroundColor:Colors.light,height:"100%",borderRadius:10}}><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",borderRadius:10}}source={require('../images/old_man.png')} /></View>
             </TouchableOpacity>
 
         </View>

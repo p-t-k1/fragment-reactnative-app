@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {
-  useColorScheme, View,
+    BackHandler,
+    useColorScheme, View,
 } from 'react-native';
 import Home from './components/Home';
 import Profile from './components/Profile';
@@ -13,11 +14,24 @@ import AddNew from './components/AddNew';
 import Search from './components/Search';
 import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 import Login from './components/Login';
+import RNBootSplash from "react-native-bootsplash";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
+
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', ()=>true);
+        const init = async () => {
+            // …do multiple sync or async tasks
+        };
+
+        init().finally(async () => {
+            await RNBootSplash.hide({ fade: true });
+            console.log("Bootsplash has been hidden successfully");
+        });
+    }, []);
 
     /*function HomeStackScreen() {
         return (
