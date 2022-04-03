@@ -1,33 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Colors from '../Colors';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const SingleNote = ({ navigation }) => {
+const SingleNote = (props) => {
+
+    const [content,setContent] = useState(props.data.content)
+    const [author,setAuthor] = useState(props.data.bookAuthor)
+    const [title,setTitle] = useState(props.data.bookTitle)
+    const [image,setImage] = useState(props.data.cover?props.data.cover:'https://cdn.dribbble.com/users/5435112/screenshots/14173779/book-01_4x.jpg')
 
     return (
         <View style={styles.singleNote}>
-            <View style={{backgroundColor:"blue",width:"90%",marginTop:15,height:60,flexDirection:'row'}}>
-{/*              <Image style={{resizeMode:"contain",opacity:1,height:"100%"}}source={require('../images/twitter.png')} />*/}
-                <View style={{backgroundColor:"orange",height:'100%',aspectRatio:0.7}}><Text>321</Text></View>
-                <View style={{backgroundColor:"yellow",flex:1,margin:5}}>
-                    <Text style={{marginLeft:5,color:Colors.black,fontSize:14,fontWeight:"600"}}>Potęga podświadomości</Text>
-                    <Text style={{marginLeft:5,color:Colors.gray,fontSize:14,fontWeight:"400"}}>Jose Murphy</Text>
+            <View style={{width:"90%",marginTop:15,height:60,flexDirection:'row'}}>
+                <View style={{height:'100%',aspectRatio:0.7}}><Image style={{resizeMode:"cover",opacity:1,height:'100%',width:'100%'}} source={{uri:image}} /></View>
+                <View style={{flex:1,margin:5}}>
+                    <Text numberOfLines={1} style={{marginLeft:5,color:Colors.black,fontSize:14,fontWeight:"600"}}>{title?title:""}</Text>
+                    <Text numberOfLines={1} style={{marginLeft:5,color:Colors.gray,fontSize:14,fontWeight:"400"}}>{author ? author : ""}</Text>
                 </View>
             </View>
-            <View style={{backgroundColor:"red",width:"90%",marginTop:15,height:40,flexDirection:'row'}}><Text style={{color:Colors.black, fontSize:16,fontFamily:"serif",fontWeight:"400"}}>Przyciągasz co myślisz</Text></View>
+            <View style={{width:"90%",marginTop:15,height:60,flexDirection:'row'}}><Text numberOfLines={2} style={{color:Colors.black, fontSize:16,fontFamily:"serif",fontWeight:"400"}}>{content?content:""} </Text></View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     singleNote:{
-        width:"95%",
-        backgroundColor:"green",
-        marginBottom:20,
+        width:"97%",
+        backgroundColor:Colors.light,
+        marginTop:20,
         aspectRatio:2.3,
         alignItems:"center",
         borderRadius:5,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.66,
+        shadowRadius: 3.68,
+
+        elevation: 5,
     },
 })
 

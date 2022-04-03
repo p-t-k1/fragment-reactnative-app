@@ -4,7 +4,7 @@ import Colors from '../Colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import axios from 'axios';
 
-const Home = (props) => {
+const Header = (props) => {
 
     const [displayBell,setDisplayBell] = useState(props.name!=="Profil")
     const [displayCog,setDisplayCog] = useState(props.name==="Profil")
@@ -60,4 +60,4 @@ const Home = (props) => {
         </View>
     )
 }
-export default Home;
+export default Header;

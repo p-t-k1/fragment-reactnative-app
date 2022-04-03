@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
-import {Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {AsyncStorage, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Colors from '../Colors';
 import Header from './Header';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SingleBook from './SingleBook';
+import axios from 'axios';
 
 
 
@@ -11,6 +12,35 @@ import SingleBook from './SingleBook';
 const Search = ({navigation}) => {
 
     const [search,setSearch] = useState()
+    const [books,setBooks]= useState()
+
+    const getBooksFromServer = (userId) =>{
+        axios({
+            method: 'post',
+            url: 'http://10.0.2.2:3001/api/notes/findUserBooks',
+            data: {
+                userId: userId
+            }
+        }).then((response) => {
+            setBooks(response.data)
+        }).catch((error) => {
+            console.log(error)
+            alert('Błąd podczas ładowania zapisanych ksiązek')
+        });
+    }
+
+    const loadBooks = async () => {
+        try {
+            const userId = await AsyncStorage.getItem('STORAGE_USERID')
+            getBooksFromServer(JSON.parse(userId).userId)
+        } catch (e) {
+            alert('Failed to fetch the data from storage')
+        }
+    }
+
+    useEffect(() => {
+        loadBooks()
+    }, [])
 
     return (
         <View style={{flex: 1,backgroundColor: Colors.light}}>
@@ -33,20 +63,13 @@ const Search = ({navigation}) => {
                 <Text style={{textTransform:"uppercase",color:Colors.black,marginTop:10,fontSize:16,marginBottom:10}}>Przeglądaj zapisane</Text>
                 <View style={{display:'flex',alignItems:"center"}}>
                     <TouchableOpacity onPress={()=>{navigation.navigate("AllNotes")}} style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Wszystkie</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.png')} /></TouchableOpacity>
-                    <View style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Po tagach</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.png')} /></View>
+                    <View style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Losowe</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.png')} /></View>
                 </View>
             </View>
             <View style={styles.recentBooksContainer}>
                 <Text style={{textTransform:"uppercase",color:Colors.black,marginTop:10,fontSize:16,marginBottom:10}}>Książki</Text>
                 <View style={{flexDirection:"row",flexWrap:"wrap"}}>
-                    <SingleBook/>
-                    <SingleBook/>
-                    <SingleBook/>
-                    <SingleBook/>
-                    <SingleBook/>
-                    <SingleBook/>
-                    <SingleBook/>
-                    <SingleBook/>
+                    {books && books.map(element=><SingleBook data={element} />)}
                 </View>
             </View>
             </ScrollView>

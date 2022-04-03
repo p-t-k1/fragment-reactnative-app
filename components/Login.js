@@ -35,7 +35,7 @@ const Login = ({navigation}) =>{
     }
 
     const sendDataToLogin = () =>{
-        console.log(login + password)
+        //console.log(login + password)
         axios({
             method: 'post',
             url: 'http://10.0.2.2:3001/api/user/auth',
