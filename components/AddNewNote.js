@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {AsyncStorage, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {AsyncStorage, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
 import Colors from '../Colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SingleNote from './SingleNote';
@@ -7,49 +7,19 @@ import {Screen} from 'react-native-screens';
 import axios from 'axios';
 
 
-const Home = ({ navigation }) => {
+const AddNewNote = ({ navigation }) => {
 
-    const [notes,setNotes] = useState();
-
-    const getNotesFromServer = (userId) =>{
-        axios({
-            method: 'post',
-            url: 'http://10.0.2.2:3001/api/notes/findAll',
-            data: {
-                userId: userId
-            }
-        }).then((response) => {
-            setNotes(response.data)
-            //console.log(response.data)
-        }).catch((error) => {
-            console.log(error)
-            alert('Błąd podczas ładowania zapisanych notatek')
-        });
-    }
-
-    const loadNotes = async () => {
-        try {
-            const userId = await AsyncStorage.getItem('STORAGE_USERID')
-            getNotesFromServer(JSON.parse(userId).userId)
-        } catch (e) {
-            alert('Failed to fetch the data from storage')
-        }
-    }
-
-    useEffect(() => {
-        loadNotes()
-    }, [])
+    const [input,setInput] = useState("");
 
     return (
         <View style={{flex: 1, display: 'flex', alignItems: 'center', backgroundColor: Colors.light}}>
             <View style={styles.header}>
                 <MaterialCommunityIcons name="arrow-left" size={21} color="black" onPress={()=>{navigation.goBack()}}/>
-                <Text style={{color:Colors.black, fontSize:20,fontFamily:"serif",fontWeight:"bold"}}>Wszystkie notatki</Text>
-                <MaterialCommunityIcons name="exit-to-app" size={21} color={Colors.light} />
+                <Text style={{color:Colors.black, fontSize:16,fontWeight:"400"}}>Dalej</Text>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 ,alignItems:"center",}}>
-                {notes && notes.map(element=><SingleNote data={element}/>)}
-            </ScrollView>
+            <View style={styles.inputContainer}>
+                <TextInput onChangeText={setInput} value={input} multiline={true} style={{fontSize:22}} placeholder={"Wpisz lub wklej swój fragment..."}/>
+            </View>
         </View>
     );
 }
@@ -64,8 +34,13 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         paddingLeft:10,
         paddingRight:10,
-        borderBottomWidth:1,
     },
+    inputContainer:{
+        backgroundColor: Colors.light,
+        width: "95%",
+        height: "100%",
+        marginTop:20
+    }
 })
 
-export default Home;
+export default AddNewNote;

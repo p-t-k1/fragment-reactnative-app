@@ -7,7 +7,7 @@ import {Screen} from 'react-native-screens';
 import axios from 'axios';
 
 
-const Home = ({ navigation }) => {
+const AllNotes = ({ navigation }) => {
 
     const [notes,setNotes] = useState();
 
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Home;
+export default AllNotes;

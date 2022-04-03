@@ -4,7 +4,7 @@ import Colors from '../Colors';
 import Header from './Header';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Profile = () => {
+const AddNew = ({navigation}) => {
     return (
         <View style={{flex: 1, display: 'flex', alignItems: 'center', backgroundColor: Colors.light}}>
             <Header name="Dodaj nowy"/>
@@ -22,6 +22,7 @@ const Profile = () => {
                     name="pencil-plus-outline"
                     color={Colors.white}
                     size={40}
+                    onPress={()=>{navigation.navigate("AddNewNote")}}
                     style={{marginLeft:5}}
                 /></View>
                 <Text style={{color: Colors.black}}>Dodaj nowy tekst</Text>
@@ -84,4 +85,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Profile;
+export default AddNew;
