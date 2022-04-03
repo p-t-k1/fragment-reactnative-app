@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Colors from '../Colors';
 import Header from './Header';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,7 +8,7 @@ import SingleBook from './SingleBook';
 
 
 
-const Profile = () => {
+const Search = ({navigation}) => {
 
     const [search,setSearch] = useState()
 
@@ -32,7 +32,7 @@ const Profile = () => {
             <View style={styles.browseYourContentContainer}>
                 <Text style={{textTransform:"uppercase",color:Colors.black,marginTop:10,fontSize:16,marginBottom:10}}>Przeglądaj zapisane</Text>
                 <View style={{display:'flex',alignItems:"center"}}>
-                    <View style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Wszystkie</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.png')} /></View>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("AllNotes")}} style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Wszystkie</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.png')} /></TouchableOpacity>
                     <View style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Po tagach</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.png')} /></View>
                 </View>
             </View>
@@ -95,4 +95,4 @@ const styles = StyleSheet.create({
         alignItems:'center'
     }
 })
-export default Profile;
+export default Search;

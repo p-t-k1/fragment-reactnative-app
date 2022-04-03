@@ -15,6 +15,7 @@ import Search from './components/Search';
 import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 import Login from './components/Login';
 import RNBootSplash from "react-native-bootsplash";
+import AllNotes from './components/AllNotes';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -117,6 +118,7 @@ const App: () => Node = () => {
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Main" component={TabNavigation} />
+                <Stack.Screen name="AllNotes" component={AllNotes} />
             </Stack.Navigator>
         </NavigationContainer>
     );
