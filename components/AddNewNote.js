@@ -16,16 +16,16 @@ const AddNewNote = ({ navigation }) => {
     const [userId,setUserId] = useState()
 
     const saveNoteToDatabase = (data) =>{
-        console.log("123")
+        if(input===""){
+            return alert("Wprowadź tekst aby go zapisać")
+        }
         axios({
             method: 'post',
             url: 'http://10.0.2.2:3001/api/notes/saveNote',
             data: {
                 userId: userId,
                 content: input,
-                bookTitle: data.bookTitle,
-                bookAuthor: data.bookAuthor,
-                cover: data.cover
+                cover: data
             }
         }).then((response) => {
             navigation.navigate("Main")
@@ -65,12 +65,12 @@ const AddNewNote = ({ navigation }) => {
     }, [])
 
     return (
-        <View style={{flex: 1, display: 'flex', alignItems: 'center', backgroundColor: Colors.light}}>
+        <View style={{flex: 1, display: 'flex', backgroundColor: Colors.light}}>
             <View style={styles.header}>
                 <MaterialCommunityIcons name="arrow-left" size={21} color="black" onPress={()=>{navigation.goBack()}}/>
                 <Text style={{color:Colors.light, fontSize:16,fontWeight:"400"}}>Dalej</Text>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 ,alignItems:"center",}}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 ,alignItems:"center"}}>
                 <View style={styles.inputContainer}>
                     <TextInput onChangeText={setInput} value={input} multiline={true} style={{fontSize:22}} placeholder={"Wpisz lub wklej swój fragment..."}/>
                 </View>
@@ -91,8 +91,9 @@ const AddNewNote = ({ navigation }) => {
                     </View>
                     <View style={styles.recentBooksContainer}>
                         <View style={{flexDirection:"row",flexWrap:"wrap"}}>
-                            <TouchableOpacity onPress={()=>saveNoteToDatabase({})}><SingleBook data={""} /></TouchableOpacity>
+                            <SingleBook onPress={()=>saveNoteToDatabase({})} data={""} />
                             {books && books.map(element=><SingleBook key={element} data={element} onPress={()=>saveNoteToDatabase(element)} />)}
+                            <SingleBook addNew={true}/>
                         </View>
                     </View>
                 </View>

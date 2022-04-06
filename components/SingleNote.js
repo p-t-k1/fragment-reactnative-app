@@ -7,7 +7,7 @@ const SingleNote = (props) => {
     const [content,setContent] = useState(props.data.content)
     const [author,setAuthor] = useState(props.data.bookAuthor)
     const [title,setTitle] = useState(props.data.bookTitle)
-    const [image,setImage] = useState(props.data.cover?props.data.cover:'https://cdn.dribbble.com/users/5435112/screenshots/14173779/book-01_4x.jpg')
+    const [image,setImage] = useState(props.data.cover?props.data.cover:'https://cdn.vectorstock.com/i/preview-1x/97/03/earth-globe-isometric-flat-icon-3d-vector-13519703.jpg')
 
     return (
         <View style={styles.singleNote}>

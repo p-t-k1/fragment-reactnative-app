@@ -1,14 +1,30 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import Colors from '../Colors';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SingleBook = (props) =>{
-    const [cover,setCover] = useState(props.data?props.data:'https://cdn.dribbble.com/users/5435112/screenshots/14173779/book-01_4x.jpg')
+    const [cover,setCover] = useState(props.data?props.data:'https://cdn.vectorstock.com/i/preview-1x/97/03/earth-globe-isometric-flat-icon-3d-vector-13519703.jpg')
+
+    if(props.addNew){
+        return(
+            <TouchableOpacity style={styles.singleBook} onPress={props.onPress}>
+                <View style={{resizeMode:"cover",width:"95%",height:"95%",backgroundColor:Colors.primary,alignItems:"center",justifyContent:"center"}} >
+                    <MaterialCommunityIcons
+                        name="plus-circle-outline"
+                        color={Colors.light}
+                        size={40}
+                    />
+                    <Text style={{color:Colors.light}}>Dodaj</Text>
+                </View>
+            </TouchableOpacity>
+        )
+    }
 
     return(
-        <View style={styles.singleBook}>
+        <TouchableOpacity style={styles.singleBook} onPress={props.onPress}>
         <Image style={{resizeMode:"cover",width:"95%",height:"95%"}} source={{uri:cover}}  />
-        </View>
+        </TouchableOpacity>
     )
 }
 
