@@ -92,7 +92,7 @@ const AddNewNote = ({ navigation }) => {
                     </View>
                     <View style={styles.recentBooksContainer}>
                         <View style={{flexDirection:"row",flexWrap:"wrap"}}>
-                            <SingleBook onPress={()=>saveNoteToDatabase({})} data={""} />
+                            <SingleBook onPress={()=>saveNoteToDatabase("")} data={""} />
                             <SingleBook addNew={true}/>
                             {books && books.map(element=><SingleBook key={element} data={element} onPress={()=>saveNoteToDatabase(element)} />)}
                         </View>

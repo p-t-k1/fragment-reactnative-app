@@ -13,7 +13,7 @@ const Search = ({navigation}) => {
 
     const [search,setSearch] = useState()
     const [books,setBooks]= useState()
-
+    console.log(books)
     const getBooksFromServer = (userId) =>{
         axios({
             method: 'post',
@@ -62,8 +62,8 @@ const Search = ({navigation}) => {
             <View style={styles.browseYourContentContainer}>
                 <Text style={{textTransform:"uppercase",color:Colors.black,marginTop:10,fontSize:16,marginBottom:10}}>Przeglądaj zapisane</Text>
                 <View style={{display:'flex',alignItems:"center"}}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("AllNotes")}} style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Wszystkie</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.png')} /></TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("RandomNotes")}} style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Losowe</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/library.png')} /></TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("AllNotes")}} style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Wszystkie</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/openbook.png')} /></TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{navigation.navigate("RandomNotes")}} style={styles.singleItem}><Text style={{color:Colors.black,marginLeft:15,textAlignVertical:"center", fontSize:18,fontFamily:"serif",fontWeight:"bold",flex:2}}>Losowe</Text><Image style={{resizeMode:"cover",opacity:1,width:"100%",height:"100%",flex:1,borderRadius:15}}source={require('../images/reader1.png')} /></TouchableOpacity>
                 </View>
             </View>
             <View style={styles.recentBooksContainer}>
