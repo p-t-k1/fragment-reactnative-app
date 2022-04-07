@@ -13,7 +13,6 @@ const Search = ({navigation}) => {
 
     const [search,setSearch] = useState()
     const [books,setBooks]= useState()
-    console.log(books)
     const getBooksFromServer = (userId) =>{
         axios({
             method: 'post',
@@ -55,6 +54,7 @@ const Search = ({navigation}) => {
                 <TextInput
                     style={{textTransform:"capitalize",marginLeft:5}}
                     onChangeText={setSearch}
+                    onEndEditing={()=>{navigation.navigate("SearchNotesBy",{content:search}) ;setSearch("")}}
                     value={search}
                     placeholder="Wpisz aby wyszukać"
                 />

@@ -19,6 +19,7 @@ import AllNotes from './components/AllNotes';
 import AddNewNote from './components/AddNewNote';
 import RandomNotes from './components/RandomNotes';
 import {SafeAreaView} from 'react-navigation';
+import SearchNotesBy from './components/SearchNotesBy';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -117,6 +118,7 @@ const App: () => Node = () => {
                 <Stack.Screen name="Main" component={TabNavigation} />
                 <Stack.Screen name="AllNotes" component={AllNotes} />
                 <Stack.Screen name="RandomNotes" component={RandomNotes} />
+                <Stack.Screen name="SearchNotesBy" component={SearchNotesBy} />
                 <Stack.Screen name="AddNewNote" component={AddNewNote} />
             </Stack.Navigator>
         </NavigationContainer>
