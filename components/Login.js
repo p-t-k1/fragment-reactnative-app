@@ -5,8 +5,8 @@ import axios from "axios";
 
 const Login = ({navigation}) =>{
 
-    const [login,setLogin] = useState()
-    const [password,setPassword] = useState()
+    const [login,setLogin] = useState("")
+    const [password,setPassword] = useState("")
     const [isLoading,setIsLoading] = useState(true)
 
     const readData = async () => {
@@ -16,6 +16,7 @@ const Login = ({navigation}) =>{
             if (JSON.parse(userId) !== null) {
                 console.log("Witaj, " + userId)
                 navigation.navigate('Main')
+                setIsLoading(false)
             }
             else{
                 setIsLoading(false)
@@ -66,7 +67,8 @@ const Login = ({navigation}) =>{
 
     useEffect(() => {
         readData()
-    }, [])
+        console.log("elo")
+    }, [navigation])
 
 
 
