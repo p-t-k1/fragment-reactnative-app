@@ -60,6 +60,7 @@ const AddNewNote = ({ navigation }) => {
         }
     }
 
+
     useEffect(() => {
         loadBooks()
     }, [])
@@ -92,8 +93,8 @@ const AddNewNote = ({ navigation }) => {
                     <View style={styles.recentBooksContainer}>
                         <View style={{flexDirection:"row",flexWrap:"wrap"}}>
                             <SingleBook onPress={()=>saveNoteToDatabase({})} data={""} />
-                            {books && books.map(element=><SingleBook key={element} data={element} onPress={()=>saveNoteToDatabase(element)} />)}
                             <SingleBook addNew={true}/>
+                            {books && books.map(element=><SingleBook key={element} data={element} onPress={()=>saveNoteToDatabase(element)} />)}
                         </View>
                     </View>
                 </View>

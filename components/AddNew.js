@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Colors from '../Colors';
 import Header from './Header';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,7 +9,7 @@ const AddNew = ({navigation}) => {
         <View style={{flex: 1, display: 'flex', alignItems: 'center', backgroundColor: Colors.light}}>
             <Header name="Dodaj nowy"/>
             <View style={styles.addNewContainer}>
-                <View style={{
+                <TouchableOpacity onPress={()=>{navigation.navigate("AddNewNote")}} style={{
                     width: '20%',
                     margin: 5,
                     aspectRatio: 1,
@@ -22,9 +22,8 @@ const AddNew = ({navigation}) => {
                     name="pencil-plus-outline"
                     color={Colors.white}
                     size={40}
-                    onPress={()=>{navigation.navigate("AddNewNote")}}
                     style={{marginLeft:5}}
-                /></View>
+                /></TouchableOpacity>
                 <Text style={{color: Colors.black}}>Dodaj nowy tekst</Text>
             </View>
             <View style={styles.syncContainer}>

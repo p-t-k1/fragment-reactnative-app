@@ -1,4 +1,4 @@
-import {AsyncStorage, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {ActivityIndicator, AsyncStorage, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Colors from '../Colors';
 import axios from "axios";
@@ -7,6 +7,7 @@ const Login = ({navigation}) =>{
 
     const [login,setLogin] = useState()
     const [password,setPassword] = useState()
+    const [isLoading,setIsLoading] = useState(true)
 
     const readData = async () => {
         try {
@@ -17,6 +18,7 @@ const Login = ({navigation}) =>{
                 navigation.navigate('Main')
             }
             else{
+                setIsLoading(false)
             }
         } catch (e) {
             alert('Failed to fetch the data from storage')
@@ -53,17 +55,29 @@ const Login = ({navigation}) =>{
         });
     }
 
+    const loadingScreen = () =>{
+        return(
+            <View style={{backgroundColor:Colors.light,opacity:1,elevation:10,width:"100%",height:"100%",margin:0,top:0,alignItems:"center",justifyContent:"center"}}>
+                <ActivityIndicator color={Colors.primary} size={"large"}/>
+                <Text style={{marginTop:10}}>Ładowanie</Text>
+            </View>
+        )
+    }
+
     useEffect(() => {
         readData()
     }, [])
 
+
+
     return(
-        <View style={{display:'flex',alignItems:'center',backgroundColor: Colors.light,flex:1}}>
-            <Text style={{color:Colors.black,marginTop:100,fontSize:32,fontFamily:"serif",fontWeight:"bold"}}>Fragment</Text>
+        <View style={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor: Colors.light,flex:1}}>
+            <Text style={{color:Colors.black,marginTop:-50,fontSize:32,fontFamily:"serif",fontWeight:"bold"}}>Fragment</Text>
             <Text style={{marginTop:20,color:Colors.black,fontSize:16,fontWeight:"600",textAlign:"center",width:"80%"}}>Zapisuj i utrwalaj swoje najważniejsze notatki z książek</Text>
             <TextInput value={login} onChangeText={text => setLogin(text)}  placeholder={"Nick"} style={styles.input}/>
             <TextInput value={password} onChangeText={text => setPassword(text)} secureTextEntry={true} placeholder={"Hasło"} style={styles.input}/>
-            <TouchableOpacity style={{backgroundColor:Colors.primary,padding:15,borderRadius:10,marginTop:20,width:"90%",textAlign:"center",color:Colors.white,fontWeight:"600",fontSize:16}} onPress={()=>sendDataToLogin()}><Text style={{fontSize:16,color:Colors.white,fontWeight:"600",textAlign:"center"}}>Zaloguj się</Text></TouchableOpacity>
+            {isLoading &&  <ActivityIndicator style={{marginTop:20}} color={Colors.primary} size={"large"}/> }
+            {!isLoading && <TouchableOpacity style={{backgroundColor:Colors.primary,padding:15,borderRadius:10,marginTop:20,width:"90%",textAlign:"center",color:Colors.white,fontWeight:"600",fontSize:16}} onPress={()=>sendDataToLogin()}><Text style={{fontSize:16,color:Colors.white,fontWeight:"600",textAlign:"center"}}>Zaloguj się</Text></TouchableOpacity>}
             <Text style={{marginTop:15,color:Colors.black,fontSize:16,fontWeight:"300",textAlign:"center",width:"80%"}}>Zarejestruj się ￫</Text>
         </View>
     )

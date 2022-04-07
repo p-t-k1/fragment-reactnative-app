@@ -1,5 +1,5 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import {Image, StyleSheet, Text,Animated ,TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 import Colors from '../Colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 

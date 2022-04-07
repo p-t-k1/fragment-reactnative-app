@@ -8,6 +8,7 @@ import ToggleSwitch from 'toggle-switch-react-native'
 const Profile = ({navigation}) => {
 
     const [reviewsAmount,setReviewsAmount] = useState(5)
+    const [randomNotesAmount,setRandomNotesAmount] = useState(4)
     const [randomizeReviews,setRandomizeReviews] = useState(false)
 
     return (
@@ -26,6 +27,17 @@ const Profile = ({navigation}) => {
                     thumbTintColor={Colors.primary}
                     value={reviewsAmount}
                     onValueChange={value => setReviewsAmount(value)}
+                /></View>
+                <Text style={{marginLeft:15,fontSize:16,color:Colors.black,fontWeight:"600"}}>Ilość losowych fragmentów: {randomNotesAmount}</Text>
+                <View style={{width:"90%",display:'flex',marginLeft:15,marginBottom:20}}><Slider
+                    minimumValue={1}
+                    maximumValue={15}
+                    step={1}
+                    minimumTrackTintColor={Colors.primary}
+                    maximumTrackTintColor={Colors.primary_light}
+                    thumbTintColor={Colors.primary}
+                    value={randomNotesAmount}
+                    onValueChange={value => setRandomNotesAmount(value)}
                 /></View>
                 <ToggleSwitch
                     isOn={randomizeReviews}

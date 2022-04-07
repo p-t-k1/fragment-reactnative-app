@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {
-    BackHandler,
+    BackHandler, StatusBar,
     useColorScheme, View,
 } from 'react-native';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import Colors from './Colors';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AddNew from './components/AddNew';
@@ -17,6 +17,8 @@ import Login from './components/Login';
 import RNBootSplash from "react-native-bootsplash";
 import AllNotes from './components/AllNotes';
 import AddNewNote from './components/AddNewNote';
+import RandomNotes from './components/RandomNotes';
+import {SafeAreaView} from 'react-navigation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -24,6 +26,7 @@ const Stack = createNativeStackNavigator();
 const App: () => Node = () => {
 
     useEffect(() => {
+        console.disableYellowBox = true;
         BackHandler.addEventListener('hardwareBackPress', ()=>true);
         const init = async () => {
             // …do multiple sync or async tasks
@@ -35,21 +38,13 @@ const App: () => Node = () => {
         });
     }, []);
 
-    /*function HomeStackScreen() {
-        return (
-            <HomeStack.Navigator>
-                <HomeStack.Screen name="Login" component={Login} />
-                <HomeStack.Screen name="Home" component={Home} />
-            </HomeStack.Navigator>
-        );
-    }*/
-
     function TabNavigation(){
         return(
             <Tab.Navigator
                 initialRouteName="Home"
                 tabBarOptions={{
                     activeTintColor: Colors.primary,
+                    inactiveTintColor:Colors.gray,
                     style: {
                         backgroundColor: Colors.light,
                     },
@@ -116,10 +111,12 @@ const App: () => Node = () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <StatusBar backgroundColor={Colors.light}></StatusBar>
+            <Stack.Navigator screenOptions={{ headerShown: false}}>
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Main" component={TabNavigation} />
                 <Stack.Screen name="AllNotes" component={AllNotes} />
+                <Stack.Screen name="RandomNotes" component={RandomNotes} />
                 <Stack.Screen name="AddNewNote" component={AddNewNote} />
             </Stack.Navigator>
         </NavigationContainer>
