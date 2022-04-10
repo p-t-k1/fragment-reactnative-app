@@ -76,8 +76,8 @@ const Login = ({navigation}) =>{
         <View style={{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor: Colors.light,flex:1}}>
             <Text style={{color:Colors.black,marginTop:-50,fontSize:32,fontFamily:"serif",fontWeight:"bold"}}>Fragment</Text>
             <Text style={{marginTop:20,color:Colors.black,fontSize:16,fontWeight:"600",textAlign:"center",width:"80%"}}>Zapisuj i utrwalaj swoje najważniejsze notatki z książek</Text>
-            <TextInput value={login} onChangeText={text => setLogin(text)}  placeholder={"Nick"} style={styles.input}/>
-            <TextInput value={password} onChangeText={text => setPassword(text)} secureTextEntry={true} placeholder={"Hasło"} style={styles.input}/>
+            <TextInput spellCheck={false} autoCapitalize={'none'} autoCorrect={false} keyboardType="visible-password" value={login} onChangeText={text => setLogin(text)}  placeholder={"Nick"} style={styles.input}/>
+            <TextInput value={password} autoCapitalize={'none'} onChangeText={text => setPassword(text)} secureTextEntry={true} placeholder={"Hasło"} style={styles.input}/>
             {isLoading &&  <ActivityIndicator style={{marginTop:20}} color={Colors.primary} size={"large"}/> }
             {!isLoading && <TouchableOpacity style={{backgroundColor:Colors.primary,padding:15,borderRadius:10,marginTop:20,width:"90%",textAlign:"center",color:Colors.white,fontWeight:"600",fontSize:16}} onPress={()=>sendDataToLogin()}><Text style={{fontSize:16,color:Colors.white,fontWeight:"600",textAlign:"center"}}>Zaloguj się</Text></TouchableOpacity>}
             <Text style={{marginTop:15,color:Colors.black,fontSize:16,fontWeight:"300",textAlign:"center",width:"80%"}}>Zarejestruj się ￫</Text>
